@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CreatorSpark – Dashboard</title>
+</head>
+
+<body>
+
+  <h1 id="welcomeMessage">Welcome to CreatorSpark</h1>
+  <p>Tell us about the content you want ideas for.</p>
+
+  <hr>
+
+  <!-- TYPE OF CONTENT -->
+  <label>Type of Content:</label><br>
+  <select id="contentType" onchange="handleContentTypeChange()">
+    <option value="">-- Select --</option>
+    <option>Business</option>
+    <option>Lifestyle</option>
+    <option>Education</option>
+    <option>Fitness</option>
+    <option>Cooking</option>
+    <option>Humor</option>
+    <option>Mythology</option>
+    <option>News</option>
+    <option>Podcast</option>
+    <option>Interview</option>
+    <option value="other">Other</option>
+  </select>
+
+  <br><br>
+
+  <!-- OTHER CONTENT TYPE INPUT -->
+  <div id="otherContentBox" style="display:none;">
+    <label>Please specify:</label><br>
+    <input type="text" id="otherContentInput" placeholder="Enter content type">
+  </div>
+
+  <br><br>
+
+  <!-- TARGET AUDIENCE -->
+  <label>Target Audience:</label><br>
+  <input type="checkbox" id="selectAll" onclick="selectAllAudience()"> Select All<br>
+
+  <input type="checkbox" class="audience" value="Children (3–12)"> Children (3–12)<br>
+  <input type="checkbox" class="audience" value="Teens (13–19)"> Teens (13–19)<br>
+  <input type="checkbox" class="audience" value="Youth (20–35)"> Youth (20–35)<br>
+  <input type="checkbox" class="audience" value="Middle Aged (36–60)"> Middle Aged (36–60)<br>
+  <input type="checkbox" class="audience" value="Old (60+)"> Old (60+)
+
+  <br><br>
+
+  <!-- PAST VIDEO TITLES -->
+  <label>Past Video Titles (one per line):</label><br>
+  <textarea id="pastTitles" rows="6" cols="60"
+    placeholder="Example:
+How I built my first startup
+Why most businesses fail
+Lessons from my first 10k subscribers"></textarea>
+
+  <br><br>
+
+  <button onclick="generateIdeas()">Generate Ideas</button>
+
+  <hr>
+
+  <!-- OUTPUT -->
+  <h2>Suggested Content Ideas</h2>
+  <div id="outputArea">
+    <p>Your content ideas will appear here.</p>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
