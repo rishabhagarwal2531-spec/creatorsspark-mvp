@@ -22,3 +22,25 @@ function signupUser() {
 
     window.location.href = "login.html";
 }
+
+
+function loginUser() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const storedUser = localStorage.getItem("creatorsparkUser");
+
+    if (!storedUser) {
+        alert("No user found. Please sign up first.");
+        return;
+    }
+
+    const user = JSON.parse(storedUser);
+
+    if (email === user.email && password === user.password) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Invalid email or password.");
+    }
+}
