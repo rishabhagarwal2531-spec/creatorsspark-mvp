@@ -44,3 +44,24 @@ function loginUser() {
         alert("Invalid email or password.");
     }
 }
+
+function handleContentTypeChange() {
+    const contentType = document.getElementById("contentType").value;
+    const otherBox = document.getElementById("otherContentBox");
+
+    if (contentType === "other") {
+        otherBox.style.display = "block";
+    } else {
+        otherBox.style.display = "none";
+    }
+}
+
+function selectAllAudience() {
+    const checkboxes = document.getElementsByClassName("audience");
+    const selectAll = document.getElementById("selectAll").checked;
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = selectAll;
+    }
+}
+
