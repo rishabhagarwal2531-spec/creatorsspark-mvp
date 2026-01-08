@@ -141,5 +141,5 @@ ideas.forEach((idea, index) => {
     )})`;
 }
 
-
+}
 
