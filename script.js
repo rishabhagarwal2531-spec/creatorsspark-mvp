@@ -104,19 +104,33 @@ function generateIdeas() {
         `${contentType} lessons I learned the hard way`
     ];
 
-    ideas.forEach((idea, index) => {
-        const ideaBlock = document.createElement("div");
+    const aiEnabled = document.getElementById("aiAssist").checked;
 
-        ideaBlock.innerHTML = `
-            <h3>Idea ${index + 1}: ${idea}</h3>
-            <p><strong>Reasoning:</strong> This topic connects well with audiences like 
-            ${selectedAudiences.join(", ")} because it focuses on real experiences and common pain points.</p>
-            <p><strong>Human Note:</strong> This idea is based on general content patterns and should be refined
-            using your personal experience and recent trends.</p>
-            <hr>
-        `;
+ideas.forEach((idea, index) => {
+    let refinedIdea = idea;
 
-        outputArea.appendChild(ideaBlock);
-    });
-}
+    if (aiEnabled) {
+        refinedIdea = simulateAIRefinement(
+            idea,
+            contentType,
+            selectedAudiences
+        );
+    }
+
+    const ideaBlock = document.createElement("div");
+
+    ideaBlock.innerHTML = `
+        <h3>Idea ${index + 1}: ${refinedIdea}</h3>
+        <p><strong>Reasoning:</strong> This idea is relevant for 
+        ${selectedAudiences.join(", ")} as it focuses on practical
+        insights and relatable challenges.</p>
+        <p><strong>Human Note:</strong> AI suggestions are used only
+        for ideation support. Final content decisions should be
+        made by the creator based on context and trends.</p>
+        <hr>
+    `;
+
+    outputArea.appendChild(ideaBlock);
+});
+
 
