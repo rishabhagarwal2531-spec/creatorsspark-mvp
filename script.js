@@ -133,4 +133,11 @@ ideas.forEach((idea, index) => {
     outputArea.appendChild(ideaBlock);
 });
 
+    function simulateAIRefinement(idea, contentType, audiences) {
+    return `AI-assisted angle: ${idea} (tailored for ${audiences.join(
+        ", "
+    )})`;
+}
+
+
 
