@@ -1,3 +1,5 @@
+alert("script.js loaded");
+
 function signupUser() {
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
