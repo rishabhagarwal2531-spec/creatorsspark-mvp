@@ -119,4 +119,7 @@ label {
 .ai-toggle label {
     cursor: pointer;
 }
+.ai-toggle input:checked {
+    accent-color: #38bdf8;
+}
 
