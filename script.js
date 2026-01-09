@@ -120,6 +120,8 @@ ideas.forEach((idea, index) => {
     }
 
     const ideaBlock = document.createElement("div");
+ideaBlock.className = "idea-card";
+
 
     ideaBlock.innerHTML = `
         <h3>Idea ${index + 1}: ${refinedIdea}</h3>
