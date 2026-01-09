@@ -122,4 +122,13 @@ label {
 .ai-toggle input:checked {
     accent-color: #38bdf8;
 }
+/* Action Row Layout */
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
 
