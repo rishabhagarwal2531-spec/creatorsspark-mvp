@@ -104,15 +104,15 @@ label {
 .ai-toggle {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-size: 16px;
-    color: #ddd;
+    color: #e5e7eb;
 }
 
 .ai-toggle input {
-    transform: scale(1.2);
+    transform: scale(1.3);
     cursor: pointer;
 }
 
