@@ -131,4 +131,30 @@ label {
     margin-bottom: 30px;
 }
 
+/* Header / Navbar */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 30px;
+  background: rgba(10, 15, 30, 0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+}
+
+.brand-name {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 
