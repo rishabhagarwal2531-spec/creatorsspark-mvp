@@ -17,8 +17,8 @@ body {
 /* Main Container */
 .container {
     max-width: 900px;
-    margin: auto;
-    background: #020617;
+    margin-top: 40px;
+   background: #020617;
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 0 40px rgba(0,0,0,0.6);
@@ -149,6 +149,9 @@ label {
 
 .logo:hover {
   transform: scale(1.08);
+}
+.header {
+  margin-bottom: 60px;
 }
 
 
