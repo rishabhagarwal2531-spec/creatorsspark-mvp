@@ -135,33 +135,23 @@ label {
 .header {
   display: flex;
   align-items: center;
-  padding: 30px 50px;
-  background: rgba(10, 15, 30, 0.9);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
+  padding: 16px 32px;
+  background: linear-gradient(180deg, #020617, #020617ee);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 
 }
 
 .logo {
-  height: 70px;
+  height: 60px;          /* Perfect SaaS navbar size */
   width: auto;
-  filter: drop-shadow(0 0 18px rgba(56,189,248,0.6));
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(56,189,248,0.4));
+  transition: transform 0.25s ease;
 }
-
-
 
 .logo:hover {
   transform: scale(1.08);
-}
-
-}
-
-.logo {
-  height: 48px;
-  filter: drop-shadow(0 0 12px rgba(56,189,248,0.5));
 }
 
 
