@@ -154,6 +154,54 @@ label {
   margin-bottom: 60px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #020617, #020b2d);
+  border-radius: 16px;
+  margin-bottom: 60px;
+}
+
+.nav-center a {
+  margin: 0 16px;
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-center a:hover {
+  color: #38bdf8;
+}
+
+.nav-right {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: #38bdf8;
+  color: #020617;
+}
+
+.nav-btn.primary {
+  background: #38bdf8;
+  color: #020617;
+}
+
+
 
 
 
