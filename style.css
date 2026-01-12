@@ -158,16 +158,8 @@ label {
 
 }
 
-.brand-name {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 .logo {
-  height: 48px;
+  height: 96px;   /* doubled from 48px */
   filter: drop-shadow(0 0 12px rgba(56,189,248,0.5));
 }
 
