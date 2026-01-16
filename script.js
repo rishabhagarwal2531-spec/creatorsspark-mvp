@@ -198,7 +198,7 @@ function renderConnectedAccounts() {
 document.addEventListener("DOMContentLoaded", renderConnectedAccounts);
 // YOUTUBE ANALYTICS SYSTEM
 
-const YOUTUBE_API_KEY = AIzaSyBa2bt8jVj25XNdE_zy0uU7gDSs98xAz8s;
+const YOUTUBE_API_KEY = "AIzaSyBa2bt8jVj25XNdE_zy0uU7gDSs98xAz8s";
 
 async function fetchYouTubeAnalytics() {
   const channelName = socialAccounts.youtube;
