@@ -286,6 +286,35 @@ label {
   color: #fff;
   cursor: pointer;
 }
+.analytics-card {
+  margin-top: 40px;
+  padding: 25px;
+  text-align: center;
+}
+
+.analytics-btn {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #00d4ff, #6a5cff);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.analytics-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,212,255,0.6);
+}
+
+.analytics-result {
+  margin-top: 20px;
+  color: #fff;
+  font-size: 16px;
+}
+
 
 
 
