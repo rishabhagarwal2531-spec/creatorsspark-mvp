@@ -1,4 +1,5 @@
-alert("script.js loaded");
+let youtubeHistory = JSON.parse(localStorage.getItem("creatorsparkYouTubeHistory")) || [];
+
 
 function signupUser() {
     const name = document.getElementById("name").value;
@@ -244,6 +245,61 @@ async function fetchYouTubeAnalytics() {
     resultDiv.innerHTML = "Error fetching analytics.";
   }
 }
+// Save history snapshot
+const snapshot = {
+  date: new Date().toLocaleDateString(),
+  subscribers: Number(stats.subscriberCount),
+  views: Number(stats.viewCount),
+  videos: Number(stats.videoCount)
+};
+
+youtubeHistory.push(snapshot);
+localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+
+// Render charts
+renderCharts();
+
+function renderCharts() {
+  if (youtubeHistory.length === 0) return;
+
+  const labels = youtubeHistory.map(item => item.date);
+  const subsData = youtubeHistory.map(item => item.subscribers);
+  const viewsData = youtubeHistory.map(item => item.views);
+
+  const subsCtx = document.getElementById("subsChart").getContext("2d");
+  const viewsCtx = document.getElementById("viewsChart").getContext("2d");
+
+  if (window.subsChartInstance) window.subsChartInstance.destroy();
+  if (window.viewsChartInstance) window.viewsChartInstance.destroy();
+
+  window.subsChartInstance = new Chart(subsCtx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [{
+        label: "Subscribers Growth",
+        data: subsData,
+        borderWidth: 2,
+        tension: 0.4
+      }]
+    }
+  });
+
+  window.viewsChartInstance = new Chart(viewsCtx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [{
+        label: "Views Growth",
+        data: viewsData,
+        borderWidth: 2,
+        tension: 0.4
+      }]
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", renderCharts);
+
 
 
 
