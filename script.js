@@ -144,4 +144,57 @@ ideaBlock.className = "idea-card";
 }
 
 }
+// SOCIAL ACCOUNTS SYSTEM
+
+let socialAccounts = JSON.parse(localStorage.getItem("creatorsparkSocialAccounts")) || {
+  youtube: "",
+  instagram: "",
+  twitter: "",
+  tiktok: ""
+};
+
+function connectAccount(platform) {
+  const input = document.getElementById(platform + "Input");
+  const value = input.value.trim();
+
+  if (!value) {
+    alert("Please enter a valid account.");
+    return;
+  }
+
+  socialAccounts[platform] = value;
+  localStorage.setItem("creatorsparkSocialAccounts", JSON.stringify(socialAccounts));
+
+  input.value = "";
+  renderConnectedAccounts();
+}
+
+function removeAccount(platform) {
+  socialAccounts[platform] = "";
+  localStorage.setItem("creatorsparkSocialAccounts", JSON.stringify(socialAccounts));
+  renderConnectedAccounts();
+}
+
+function renderConnectedAccounts() {
+  const container = document.getElementById("connectedAccountsList");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  Object.keys(socialAccounts).forEach(platform => {
+    if (socialAccounts[platform]) {
+      const div = document.createElement("div");
+      div.className = "connected-account";
+      div.innerHTML = `
+        <span><strong>${platform.toUpperCase()}</strong>: ${socialAccounts[platform]}</span>
+        <button onclick="removeAccount('${platform}')">Remove</button>
+      `;
+      container.appendChild(div);
+    }
+  });
+}
+
+// Load connected accounts on page load
+document.addEventListener("DOMContentLoaded", renderConnectedAccounts);
+
 
