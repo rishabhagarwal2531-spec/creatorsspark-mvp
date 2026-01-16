@@ -306,6 +306,43 @@ document.addEventListener("DOMContentLoaded", function () {
   renderConnectedAccounts();
   renderCharts();
 });
+function generateDemoHistory(currentSubs, currentViews) {
+  if (youtubeHistory.length > 1) return; // already has history
+
+  const today = new Date();
+
+  for (let i = 6; i >= 1; i--) {
+    const pastDate = new Date(today);
+    pastDate.setDate(today.getDate() - i);
+
+    const subs = currentSubs - Math.floor(Math.random() * 3000000);
+    const views = currentViews - Math.floor(Math.random() * 500000000);
+
+    youtubeHistory.push({
+      date: pastDate.toLocaleDateString(),
+      subscribers: subs,
+      views: views,
+      videos: 0
+    });
+  }
+}
+const currentSubs = Number(stats.subscriberCount);
+const currentViews = Number(stats.viewCount);
+
+// Generate demo past history
+generateDemoHistory(currentSubs, currentViews);
+
+// Save today's snapshot
+youtubeHistory.push({
+  date: new Date().toLocaleDateString(),
+  subscribers: currentSubs,
+  views: currentViews,
+  videos: Number(stats.videoCount)
+});
+
+localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+renderCharts();
+
 
 
 
