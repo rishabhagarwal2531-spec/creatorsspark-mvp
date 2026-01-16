@@ -208,6 +208,84 @@ label {
   margin-bottom: 40px;
 }
 
+/* SOCIAL CONNECT SECTION */
+
+.social-connect-card {
+  margin-top: 40px;
+  padding: 25px;
+}
+
+.section-subtitle {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.social-input-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 120px;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.social-input-row label {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.social-input-row input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  outline: none;
+}
+
+.social-input-row button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6a5cff, #00d4ff);
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.social-input-row button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0,212,255,0.5);
+}
+
+.connected-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.connected-account {
+  background: rgba(255,255,255,0.05);
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connected-account span {
+  color: #ccc;
+}
+
+.connected-account button {
+  background: red;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+}
 
 
 
