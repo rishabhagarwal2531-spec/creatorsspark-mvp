@@ -298,7 +298,11 @@ function renderCharts() {
     }
   });
 }
-document.addEventListener("DOMContentLoaded", renderCharts);
+document.addEventListener("DOMContentLoaded", function () {
+  renderConnectedAccounts();
+  renderCharts();
+});
+
 
 
 
