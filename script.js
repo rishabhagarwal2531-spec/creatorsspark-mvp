@@ -1,3 +1,5 @@
+
+
 let youtubeHistory = JSON.parse(localStorage.getItem("creatorsparkYouTubeHistory")) || [];
 
 
@@ -232,6 +234,20 @@ async function fetchYouTubeAnalytics() {
 
     const channel = statsData.items[0];
     const stats = channel.statistics;
+      // Save history snapshot
+const snapshot = {
+  date: new Date().toLocaleDateString(),
+  subscribers: Number(stats.subscriberCount),
+  views: Number(stats.viewCount),
+  videos: Number(stats.videoCount)
+};
+
+youtubeHistory.push(snapshot);
+localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+
+// Render charts
+renderCharts();
+
 
     resultDiv.innerHTML = `
       <h3>${channel.snippet.title}</h3>
@@ -245,19 +261,7 @@ async function fetchYouTubeAnalytics() {
     resultDiv.innerHTML = "Error fetching analytics.";
   }
 }
-// Save history snapshot
-const snapshot = {
-  date: new Date().toLocaleDateString(),
-  subscribers: Number(stats.subscriberCount),
-  views: Number(stats.viewCount),
-  videos: Number(stats.videoCount)
-};
 
-youtubeHistory.push(snapshot);
-localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
-
-// Render charts
-renderCharts();
 
 function renderCharts() {
   if (youtubeHistory.length === 0) return;
