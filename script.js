@@ -196,5 +196,54 @@ function renderConnectedAccounts() {
 
 // Load connected accounts on page load
 document.addEventListener("DOMContentLoaded", renderConnectedAccounts);
+// YOUTUBE ANALYTICS SYSTEM
+
+const YOUTUBE_API_KEY = AIzaSyBa2bt8jVj25XNdE_zy0uU7gDSs98xAz8s;
+
+async function fetchYouTubeAnalytics() {
+  const channelName = socialAccounts.youtube;
+
+  if (!channelName) {
+    alert("Please connect your YouTube channel first.");
+    return;
+  }
+
+  const resultDiv = document.getElementById("youtubeAnalyticsResult");
+  resultDiv.innerHTML = "Fetching analytics...";
+
+  try {
+    // Search channel ID by name
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${channelName}&key=${YOUTUBE_API_KEY}`;
+    const searchRes = await fetch(searchUrl);
+    const searchData = await searchRes.json();
+
+    if (!searchData.items || searchData.items.length === 0) {
+      resultDiv.innerHTML = "Channel not found.";
+      return;
+    }
+
+    const channelId = searchData.items[0].id.channelId;
+
+    // Fetch channel statistics
+    const statsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${channelId}&key=${YOUTUBE_API_KEY}`;
+    const statsRes = await fetch(statsUrl);
+    const statsData = await statsRes.json();
+
+    const channel = statsData.items[0];
+    const stats = channel.statistics;
+
+    resultDiv.innerHTML = `
+      <h3>${channel.snippet.title}</h3>
+      <p>📺 Subscribers: ${Number(stats.subscriberCount).toLocaleString()}</p>
+      <p>👁 Total Views: ${Number(stats.viewCount).toLocaleString()}</p>
+      <p>🎥 Videos: ${Number(stats.videoCount).toLocaleString()}</p>
+    `;
+
+  } catch (error) {
+    console.error(error);
+    resultDiv.innerHTML = "Error fetching analytics.";
+  }
+}
+
 
 
