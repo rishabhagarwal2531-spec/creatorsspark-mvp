@@ -1,6 +1,6 @@
 
 
-let youtubeHistory = JSON.parse(localStorage.getItem("creatorsparkYouTubeHistory")) || [];
+let youtubeHistory = JSON.parse(localStorage.getItem("creatorsparkYouTubeHistory")) || {};
 
 
 function signupUser() {
@@ -234,6 +234,10 @@ async function fetchYouTubeAnalytics() {
 
     const channel = statsData.items[0];
     const stats = channel.statistics;
+      const channelTitle = channel.snippet.title;
+      const channelCreatedAt = channel.snippet.publishedAt;
+
+
       // Save history snapshot
 const snapshot = {
   date: new Date().toLocaleDateString(),
@@ -242,11 +246,19 @@ const snapshot = {
   videos: Number(stats.videoCount)
 };
 
-youtubeHistory.push(snapshot);
+// Create history array for this channel if not exists
+if (!youtubeHistory[channelTitle]) {
+  youtubeHistory[channelTitle] = [];
+}
+
+// Save snapshot for this channel only
+youtubeHistory[channelTitle].push(snapshot);
+
 localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
 
-// Render charts
-renderCharts();
+// Render charts for this channel
+renderCharts(channelTitle);
+
 
 
     resultDiv.innerHTML = `
@@ -263,8 +275,11 @@ renderCharts();
 }
 
 
-function renderCharts() {
-  if (youtubeHistory.length === 0) return;
+function renderCharts(channelTitle) {
+  if (!youtubeHistory[channelTitle] || youtubeHistory[channelTitle].length === 0) return;
+
+  const history = youtubeHistory[channelTitle];
+
 
   const labels = youtubeHistory.map(item => item.date);
   const subsData = youtubeHistory.map(item => item.subscribers);
@@ -328,6 +343,17 @@ function generateDemoHistory(currentSubs, currentViews) {
 }
 const currentSubs = Number(stats.subscriberCount);
 const currentViews = Number(stats.viewCount);
+generateOneYearBackfill(channelTitle, currentSubs, currentViews, channelCreatedAt);
+youtubeHistory[channelTitle].push({
+  date: new Date().toLocaleDateString(),
+  subscribers: currentSubs,
+  views: currentViews,
+  videos: Number(stats.videoCount)
+});
+
+localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+renderCharts(channelTitle);
+
 
 // Generate demo past history
 generateDemoHistory(currentSubs, currentViews);
@@ -341,7 +367,40 @@ youtubeHistory.push({
 });
 
 localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
-renderCharts();
+// charts load only after fetching analytics
+function generateOneYearBackfill(channelTitle, currentSubs, currentViews, channelCreatedAt) {
+  // If history already exists, do not overwrite
+  if (youtubeHistory[channelTitle] && youtubeHistory[channelTitle].length > 10) return;
+
+  youtubeHistory[channelTitle] = [];
+
+  const today = new Date();
+  const startDate = new Date();
+  startDate.setFullYear(today.getFullYear() - 1);
+
+  const months = 12;
+
+  // Estimate starting values (12 months ago)
+  let startSubs = Math.floor(currentSubs * 0.6);
+  let startViews = Math.floor(currentViews * 0.55);
+
+  const subsGrowth = Math.floor((currentSubs - startSubs) / months);
+  const viewsGrowth = Math.floor((currentViews - startViews) / months);
+
+  for (let i = 0; i <= months; i++) {
+    const pointDate = new Date(startDate);
+    pointDate.setMonth(startDate.getMonth() + i);
+
+    youtubeHistory[channelTitle].push({
+      date: pointDate.toLocaleDateString(),
+      subscribers: startSubs + subsGrowth * i,
+      views: startViews + viewsGrowth * i,
+      videos: 0
+    });
+  }
+}
+
+
 
 
 
