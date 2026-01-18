@@ -277,7 +277,7 @@ function generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews)
   }
 
   // Add current month as final point
-  
+    const currentLabel = today.toLocaleString("default", { month: "short", year: "numeric" });
   youtubeHistory[channelTitle].push({
     label: currentLabel,
     subscribers: currentSubs,
