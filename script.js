@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>🎥 Videos: ${Number(stats.videoCount).toLocaleString()}</p>
     `;
 
-  } catch (error) {
+  catch (error) {
     console.error(error);
     resultDiv.innerHTML = "Error fetching analytics.";
   }
