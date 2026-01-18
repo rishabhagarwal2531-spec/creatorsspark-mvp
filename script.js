@@ -199,6 +199,11 @@ function renderConnectedAccounts() {
 
 // Load connected accounts on page load
 document.addEventListener("DOMContentLoaded", renderConnectedAccounts);
+
+/*
+PASTE YOUR YOUTUBE ANALYTICS CODE HERE
+*/
+
 // YOUTUBE ANALYTICS SYSTEM
 
 const YOUTUBE_API_KEY = "AIzaSyBa2bt8jVj25XNdE_zy0uU7gDSs98xAz8s";
