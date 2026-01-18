@@ -274,16 +274,13 @@ renderCharts(channelTitle);
   }
 }
 
-
 function renderCharts(channelTitle) {
-  if (!youtubeHistory[channelTitle] || youtubeHistory[channelTitle].length === 0) return;
-
   const history = youtubeHistory[channelTitle];
+  if (!history || history.length === 0) return;
 
-
-  const labels = youtubeHistory.map(item => item.date);
-  const subsData = youtubeHistory.map(item => item.subscribers);
-  const viewsData = youtubeHistory.map(item => item.views);
+  const labels = history.map(item => item.label);
+  const subsData = history.map(item => item.subscribers);
+  const viewsData = history.map(item => item.views);
 
   const subsCtx = document.getElementById("subsChart").getContext("2d");
   const viewsCtx = document.getElementById("viewsChart").getContext("2d");
@@ -296,7 +293,7 @@ function renderCharts(channelTitle) {
     data: {
       labels,
       datasets: [{
-        label: "Subscribers Growth",
+        label: `${channelTitle} Subscribers (1 Year Growth)`,
         data: subsData,
         borderWidth: 2,
         tension: 0.4
@@ -309,7 +306,7 @@ function renderCharts(channelTitle) {
     data: {
       labels,
       datasets: [{
-        label: "Views Growth",
+        label: `${channelTitle} Views (1 Year Growth)`,
         data: viewsData,
         borderWidth: 2,
         tension: 0.4
@@ -317,6 +314,7 @@ function renderCharts(channelTitle) {
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   renderConnectedAccounts();
   renderCharts();
@@ -343,6 +341,9 @@ function generateDemoHistory(currentSubs, currentViews) {
 }
 const currentSubs = Number(stats.subscriberCount);
 const currentViews = Number(stats.viewCount);
+localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+
+
 generateOneYearBackfill(channelTitle, currentSubs, currentViews, channelCreatedAt);
 youtubeHistory[channelTitle].push({
   date: new Date().toLocaleDateString(),
@@ -350,8 +351,48 @@ youtubeHistory[channelTitle].push({
   views: currentViews,
   videos: Number(stats.videoCount)
 });
+function generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews) {
+  if (youtubeHistory[channelTitle] && youtubeHistory[channelTitle].length >= 12) return;
 
-localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+  youtubeHistory[channelTitle] = [];
+
+  const today = new Date();
+  const startDate = new Date();
+  startDate.setFullYear(today.getFullYear() - 1);
+
+  const months = 12;
+
+  // Start values (1 year ago)
+  let startSubs = Math.floor(currentSubs * 0.55);
+  let startViews = Math.floor(currentViews * 0.5);
+
+  const subsGrowth = Math.floor((currentSubs - startSubs) / months);
+  const viewsGrowth = Math.floor((currentViews - startViews) / months);
+
+  for (let i = 0; i < months; i++) {
+    const datePoint = new Date(startDate);
+    datePoint.setMonth(startDate.getMonth() + i);
+
+    const label = datePoint.toLocaleString("default", { month: "short", year: "numeric" });
+
+    youtubeHistory[channelTitle].push({
+      label,
+      subscribers: startSubs + subsGrowth * i,
+      views: startViews + viewsGrowth * i
+    });
+  }
+
+  // Add current month as final point
+  const currentLabel = today.toLocaleString("default", { month: "short", year: "numeric" });
+
+  youtubeHistory[channelTitle].push({
+    label: currentLabel,
+    subscribers: currentSubs,
+    views: currentViews
+  });
+}
+
+
 renderCharts(channelTitle);
 
 
@@ -399,6 +440,7 @@ function generateOneYearBackfill(channelTitle, currentSubs, currentViews, channe
     });
   }
 }
+
 
 
 
