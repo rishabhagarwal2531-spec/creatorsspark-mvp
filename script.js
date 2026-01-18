@@ -233,46 +233,61 @@ async function fetchYouTubeAnalytics() {
     const statsData = await statsRes.json();
 
     const channel = statsData.items[0];
-    const stats = channel.statistics;
-      const channelTitle = channel.snippet.title;
-      const channelCreatedAt = channel.snippet.publishedAt;
+const stats = channel.statistics;
+const channelTitle = channel.snippet.title;
+
+const currentSubs = Number(stats.subscriberCount);
+const currentViews = Number(stats.viewCount);
 
 
-      // Save history snapshot
-const snapshot = {
-  date: new Date().toLocaleDateString(),
-  subscribers: Number(stats.subscriberCount),
-  views: Number(stats.viewCount),
-  videos: Number(stats.videoCount)
-};
+function generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews) {
+  if (youtubeHistory[channelTitle] && youtubeHistory[channelTitle].length >= 12) return;
 
-// Create history array for this channel if not exists
-if (!youtubeHistory[channelTitle]) {
   youtubeHistory[channelTitle] = [];
-}
 
-// Save snapshot for this channel only
-youtubeHistory[channelTitle].push(snapshot);
+  const today = new Date();
+  const startDate = new Date();
+  startDate.setFullYear(today.getFullYear() - 1);
+
+  const months = 12;
+
+  // Start values (1 year ago)
+  let startSubs = Math.floor(currentSubs * 0.55);
+  let startViews = Math.floor(currentViews * 0.5);
+
+  const subsGrowth = Math.floor((currentSubs - startSubs) / months);
+  const viewsGrowth = Math.floor((currentViews - startViews) / months);
+
+  for (let i = 0; i < months; i++) {
+    const datePoint = new Date(startDate);
+    datePoint.setMonth(startDate.getMonth() + i);
+
+    const label = datePoint.toLocaleString("default", { month: "short", year: "numeric" });
+
+    youtubeHistory[channelTitle].push({
+      label,
+      subscribers: startSubs + subsGrowth * i,
+      views: startViews + viewsGrowth * i
+    });
+  }
+
+  // Add current month as final point
+  const currentLabel = today.toLocaleString("default", { month: "short", year: "numeric" });
+
+  youtubeHistory[channelTitle].push({
+    label: currentLabel,
+    subscribers: currentSubs,
+    views: currentViews
+  });
+}
 
 localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
 
-// Render charts for this channel
+// render charts for this channel
+    
 renderCharts(channelTitle);
 
 
-
-    resultDiv.innerHTML = `
-      <h3>${channel.snippet.title}</h3>
-      <p>📺 Subscribers: ${Number(stats.subscriberCount).toLocaleString()}</p>
-      <p>👁 Total Views: ${Number(stats.viewCount).toLocaleString()}</p>
-      <p>🎥 Videos: ${Number(stats.videoCount).toLocaleString()}</p>
-    `;
-
-  } catch (error) {
-    console.error(error);
-    resultDiv.innerHTML = "Error fetching analytics.";
-  }
-}
 
 function renderCharts(channelTitle) {
   const history = youtubeHistory[channelTitle];
@@ -318,128 +333,24 @@ function renderCharts(channelTitle) {
 document.addEventListener("DOMContentLoaded", function () {
   renderConnectedAccounts();
   renderCharts();
-});
-function generateDemoHistory(currentSubs, currentViews) {
-  if (youtubeHistory.length > 1) return; // already has history
 
-  const today = new Date();
+    resultDiv.innerHTML = `
+      <h3>${channel.snippet.title}</h3>
+      <p>📺 Subscribers: ${Number(stats.subscriberCount).toLocaleString()}</p>
+      <p>👁 Total Views: ${Number(stats.viewCount).toLocaleString()}</p>
+      <p>🎥 Videos: ${Number(stats.videoCount).toLocaleString()}</p>
+    `;
 
-  for (let i = 6; i >= 1; i--) {
-    const pastDate = new Date(today);
-    pastDate.setDate(today.getDate() - i);
-
-    const subs = currentSubs - Math.floor(Math.random() * 3000000);
-    const views = currentViews - Math.floor(Math.random() * 500000000);
-
-    youtubeHistory.push({
-      date: pastDate.toLocaleDateString(),
-      subscribers: subs,
-      views: views,
-      videos: 0
-    });
+  } catch (error) {
+    console.error(error);
+    resultDiv.innerHTML = "Error fetching analytics.";
   }
 }
-const currentSubs = Number(stats.subscriberCount);
-const currentViews = Number(stats.viewCount);
-localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
+
+        
 
 
-generateOneYearBackfill(channelTitle, currentSubs, currentViews, channelCreatedAt);
-youtubeHistory[channelTitle].push({
-  date: new Date().toLocaleDateString(),
-  subscribers: currentSubs,
-  views: currentViews,
-  videos: Number(stats.videoCount)
-});
-function generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews) {
-  if (youtubeHistory[channelTitle] && youtubeHistory[channelTitle].length >= 12) return;
 
-  youtubeHistory[channelTitle] = [];
-
-  const today = new Date();
-  const startDate = new Date();
-  startDate.setFullYear(today.getFullYear() - 1);
-
-  const months = 12;
-
-  // Start values (1 year ago)
-  let startSubs = Math.floor(currentSubs * 0.55);
-  let startViews = Math.floor(currentViews * 0.5);
-
-  const subsGrowth = Math.floor((currentSubs - startSubs) / months);
-  const viewsGrowth = Math.floor((currentViews - startViews) / months);
-
-  for (let i = 0; i < months; i++) {
-    const datePoint = new Date(startDate);
-    datePoint.setMonth(startDate.getMonth() + i);
-
-    const label = datePoint.toLocaleString("default", { month: "short", year: "numeric" });
-
-    youtubeHistory[channelTitle].push({
-      label,
-      subscribers: startSubs + subsGrowth * i,
-      views: startViews + viewsGrowth * i
-    });
-  }
-
-  // Add current month as final point
-  const currentLabel = today.toLocaleString("default", { month: "short", year: "numeric" });
-
-  youtubeHistory[channelTitle].push({
-    label: currentLabel,
-    subscribers: currentSubs,
-    views: currentViews
-  });
-}
-
-
-renderCharts(channelTitle);
-
-
-// Generate demo past history
-generateDemoHistory(currentSubs, currentViews);
-
-// Save today's snapshot
-youtubeHistory.push({
-  date: new Date().toLocaleDateString(),
-  subscribers: currentSubs,
-  views: currentViews,
-  videos: Number(stats.videoCount)
-});
-
-localStorage.setItem("creatorsparkYouTubeHistory", JSON.stringify(youtubeHistory));
-// charts load only after fetching analytics
-function generateOneYearBackfill(channelTitle, currentSubs, currentViews, channelCreatedAt) {
-  // If history already exists, do not overwrite
-  if (youtubeHistory[channelTitle] && youtubeHistory[channelTitle].length > 10) return;
-
-  youtubeHistory[channelTitle] = [];
-
-  const today = new Date();
-  const startDate = new Date();
-  startDate.setFullYear(today.getFullYear() - 1);
-
-  const months = 12;
-
-  // Estimate starting values (12 months ago)
-  let startSubs = Math.floor(currentSubs * 0.6);
-  let startViews = Math.floor(currentViews * 0.55);
-
-  const subsGrowth = Math.floor((currentSubs - startSubs) / months);
-  const viewsGrowth = Math.floor((currentViews - startViews) / months);
-
-  for (let i = 0; i <= months; i++) {
-    const pointDate = new Date(startDate);
-    pointDate.setMonth(startDate.getMonth() + i);
-
-    youtubeHistory[channelTitle].push({
-      date: pointDate.toLocaleDateString(),
-      subscribers: startSubs + subsGrowth * i,
-      views: startViews + viewsGrowth * i,
-      videos: 0
-    });
-  }
-}
 
 
 
