@@ -244,7 +244,7 @@ const channelTitle = channel.snippet.title;
 const currentSubs = Number(stats.subscriberCount);
 const currentViews = Number(stats.viewCount);
 
-
+generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews);
 function generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews) {
   if (youtubeHistory[channelTitle] && youtubeHistory[channelTitle].length >= 12) return;
 
@@ -277,8 +277,7 @@ function generateOneYearMonthlyBackfill(channelTitle, currentSubs, currentViews)
   }
 
   // Add current month as final point
-  const currentLabel = today.toLocaleString("default", { month: "short", year: "numeric" });
-
+  
   youtubeHistory[channelTitle].push({
     label: currentLabel,
     subscribers: currentSubs,
@@ -335,9 +334,7 @@ function renderCharts(channelTitle) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  renderConnectedAccounts();
-  renderCharts();
+
 
     resultDiv.innerHTML = `
       <h3>${channel.snippet.title}</h3>
@@ -346,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>🎥 Videos: ${Number(stats.videoCount).toLocaleString()}</p>
     `;
 
-  catch (error) {
+  } catch (error) {
     console.error(error);
     resultDiv.innerHTML = "Error fetching analytics.";
   }
