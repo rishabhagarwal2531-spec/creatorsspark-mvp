@@ -382,6 +382,48 @@ canvas {
   50% { transform: translateY(-18px); }
   100% { transform: translateY(0); }
 }
+.hero-video {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+  border-radius: 24px;
+  margin: 40px 60px;
+  box-shadow: 0 0 80px rgba(0,240,255,0.2);
+}
+
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.8)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.hero-overlay h1 {
+  font-size: 60px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.hero-overlay p {
+  font-size: 20px;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
 
 
 
