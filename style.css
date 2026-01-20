@@ -680,6 +680,43 @@ canvas {
     max-width: 400px;
   }
 }
+.ideas-layout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Left content */
+.ideas-left {
+  flex: 2;
+}
+
+/* Right images */
+.ideas-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: sticky;
+  top: 120px;
+}
+
+/* SVG image styling */
+.ideas-image {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(0,240,255,0.12);
+  transition: 0.3s ease;
+}
+
+.ideas-image:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 60px rgba(124,124,255,0.3);
+}
 
 
 
