@@ -494,6 +494,56 @@ canvas {
   box-shadow: 0 0 60px rgba(0,240,255,0.6);
 }
 
+/* Generate Ideas Page Layout */
+
+.ideas-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+}
+
+/* Left content */
+.ideas-main {
+  background: var(--bg-main);
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* Right visual column */
+.ideas-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Images */
+.ideas-image {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 0 35px rgba(0,240,255,0.15);
+  transition: 0.4s ease;
+}
+
+.ideas-image:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 60px rgba(0,240,255,0.35);
+}
+
+/* Hide images on mobile */
+@media (max-width: 900px) {
+  .ideas-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ideas-visual {
+    display: none;
+  }
+}
 
 
 
