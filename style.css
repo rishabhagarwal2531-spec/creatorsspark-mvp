@@ -618,6 +618,70 @@ canvas {
   }
 }
 
+/* Features Two Column Layout */
+
+.features-page {
+  max-width: 1300px;
+  margin: auto;
+  padding: 40px;
+}
+
+.features-layout {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Left content */
+.features-left {
+  flex: 2;
+  background: var(--bg-main);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* Right image */
+.features-right {
+  flex: 1;
+  position: sticky;
+  top: 120px;
+}
+
+/* Image styling */
+.features-image {
+  width: 100%;
+  border-radius: 22px;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(0,240,255,0.15);
+  transition: 0.4s ease;
+}
+
+.features-image:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 60px rgba(124,124,255,0.35);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .features-layout {
+    flex-direction: column;
+  }
+
+  .features-right {
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+
+  .features-image {
+    max-width: 400px;
+  }
+}
+
+
 
 
 
