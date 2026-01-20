@@ -28,100 +28,93 @@
   </div>
 </div>
 
+<div class="ideas-page">
 
-<div class="ideas-layout">
+  <div class="ideas-layout">
 
-  <!-- LEFT: Existing Generate Ideas Content -->
-  <div class="ideas-left">
+    <!-- LEFT SIDE -->
+    <div class="ideas-left">
 
-     <div class="tagline">
-    Turn your content into growth — powered by AI and human insight.
-  </div>
+      <div class="tagline">
+        Turn your content into growth — powered by AI and human insight.
+      </div>
 
-  <h1>Generate Content Ideas</h1>
-  <p>Tell us about the content you want ideas for.</p>
+      <h1>Generate Content Ideas</h1>
+      <p>Tell us about the content you want ideas for.</p>
 
-  <hr>
+      <hr>
 
-  <!-- TYPE OF CONTENT -->
-  <label>Type of Content:</label><br>
-  <select id="contentType" onchange="handleContentTypeChange()">
-    <option value="">-- Select --</option>
-    <option>Business</option>
-    <option>Lifestyle</option>
-    <option>Education</option>
-    <option>Fitness</option>
-    <option>Cooking</option>
-    <option>Humor</option>
-    <option>Mythology</option>
-    <option>News</option>
-    <option>Podcast</option>
-    <option>Interview</option>
-    <option value="other">Other</option>
-  </select>
+      <!-- TYPE OF CONTENT -->
+      <label>Type of Content:</label><br>
+      <select id="contentType" onchange="handleContentTypeChange()">
+        <option value="">-- Select --</option>
+        <option>Business</option>
+        <option>Lifestyle</option>
+        <option>Education</option>
+        <option>Fitness</option>
+        <option>Cooking</option>
+        <option>Humor</option>
+        <option>Mythology</option>
+        <option>News</option>
+        <option>Podcast</option>
+        <option>Interview</option>
+        <option value="other">Other</option>
+      </select>
 
-  <div id="otherContentBox" style="display:none;">
-    <label>Please specify:</label><br>
-    <input type="text" id="otherContentInput" placeholder="Enter content type">
-  </div>
+      <div id="otherContentBox" style="display:none;">
+        <label>Please specify:</label><br>
+        <input type="text" id="otherContentInput" placeholder="Enter content type">
+      </div>
 
-  <br>
+      <br>
 
-  <!-- TARGET AUDIENCE -->
-  <label>Target Audience:</label><br>
-  <input type="checkbox" id="selectAll" onclick="selectAllAudience()"> Select All<br>
+      <!-- TARGET AUDIENCE -->
+      <label>Target Audience:</label><br>
+      <input type="checkbox" id="selectAll" onclick="selectAllAudience()"> Select All<br>
 
-  <input type="checkbox" class="audience" value="Children (3–12)"> Children (3–12)<br>
-  <input type="checkbox" class="audience" value="Teens (13–19)"> Teens (13–19)<br>
-  <input type="checkbox" class="audience" value="Youth (20–35)"> Youth (20–35)<br>
-  <input type="checkbox" class="audience" value="Middle Aged (36–60)"> Middle Aged (36–60)<br>
-  <input type="checkbox" class="audience" value="Old (60+)"> Old (60+)
+      <input type="checkbox" class="audience" value="Children (3–12)"> Children (3–12)<br>
+      <input type="checkbox" class="audience" value="Teens (13–19)"> Teens (13–19)<br>
+      <input type="checkbox" class="audience" value="Youth (20–35)"> Youth (20–35)<br>
+      <input type="checkbox" class="audience" value="Middle Aged (36–60)"> Middle Aged (36–60)<br>
+      <input type="checkbox" class="audience" value="Old (60+)"> Old (60+)
 
-  <br>
+      <br>
 
-  <!-- PAST VIDEO TITLES -->
-  <label>Past Video Titles (one per line):</label><br>
-  <textarea id="pastTitles" rows="6"
-    placeholder="Example:
+      <!-- PAST VIDEO TITLES -->
+      <label>Past Video Titles (one per line):</label><br>
+      <textarea id="pastTitles" rows="6"
+        placeholder="Example:
 How I built my first startup
 Why most businesses fail
 Lessons from my first 10k subscribers"></textarea>
 
-  <div class="action-row">
-    <button onclick="generateIdeas()">Generate Ideas</button>
+      <div class="action-row">
+        <button onclick="generateIdeas()">Generate Ideas</button>
 
-    <div class="ai-toggle">
-      <input type="checkbox" id="aiAssist">
-      <label for="aiAssist">Enable AI-assisted refinement</label>
+        <div class="ai-toggle">
+          <input type="checkbox" id="aiAssist">
+          <label for="aiAssist">Enable AI-assisted refinement</label>
+        </div>
+      </div>
+
+      <!-- OUTPUT -->
+      <h2>Suggested Content Ideas</h2>
+      <div id="outputArea">
+        <p>Your content ideas will appear here.</p>
+      </div>
+
     </div>
-  </div>
 
-  <!-- OUTPUT -->
-  <h2>Suggested Content Ideas</h2>
-  <div id="outputArea">
-    <p>Your content ideas will appear here.</p>
-  </div>
-
-  <div class="footer-note">
-    Built by Rishabh | CreatorSpark MVP
-  </div>
-
-</div>
-<!-- KEEP all your existing content here -->
-    <!-- From: Turn your content into... -->
-    <!-- Till: Output Area -->
-
-  </div>
-
-  <!-- RIGHT: Visual Column -->
-  <div class="ideas-right">
-
-    <img src="assets-images/generate-ideas1.svg" class="ideas-image" alt="Creator Studio">
-    <img src="assets-images/generate-ideas.svg" class="ideas-image" alt="Content Creator">
+    <!-- RIGHT SIDE -->
+    <div class="ideas-right">
+      <img src="assets-images/generate-ideas1.svg" class="ideas-image">
+      <img src="assets-images/generate-ideas" class="ideas-image">
+    </div>
 
   </div>
 
 </div>
+
 
 
  
