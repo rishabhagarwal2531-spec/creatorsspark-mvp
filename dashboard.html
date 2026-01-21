@@ -3,114 +3,111 @@
 <head>
   <title>CreatorSpark – Dashboard</title>
   <link rel="stylesheet" href="style.css">
-  </head>
+</head>
 
+<body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="nav-left">
     <img src="logo.png" class="logo">
   </div>
 
   <div class="nav-center">
-  <a href="dashboard.html">Dashboard</a>
-  <a href="generate-ideas.html">Generate Ideas</a>
-  <a href="how-it-works.html">How It Works</a>
-  <a href="features.html">Features</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</div>
-
-
+    <a href="dashboard.html">Dashboard</a>
+    <a href="generate-ideas.html">Generate Ideas</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="features.html">Features</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
   <div class="nav-right">
     <a href="login.html" class="nav-btn">Login</a>
     <a href="signup.html" class="nav-btn primary">Sign Up</a>
   </div>
-  </div>
-
- 
-<div class="page-layout">
-  
-  <!-- LEFT COLUMN : Dashboard Content -->
-  <div class="page-left">
-
-<!-- CONNECT SOCIAL ACCOUNTS SECTION -->
-<div class="social-connect-card glass-card">
-  <h2>🔗 Connect Your Social Accounts</h2>
-  <p class="section-subtitle">Link your creator profiles to unlock analytics & AI strategy</p>
-
-  <div class="social-input-row">
-    <label>YouTube Channel</label>
-    <input type="text" id="youtubeInput" placeholder="Enter YouTube channel URL or name">
-    <button onclick="connectAccount('youtube')">Connect</button>
-  </div>
-
-  <div class="social-input-row">
-    <label>Instagram Profile</label>
-    <input type="text" id="instagramInput" placeholder="Enter Instagram username">
-    <button onclick="connectAccount('instagram')">Connect</button>
-  </div>
-
-  <div class="social-input-row">
-    <label>Twitter (X) Profile</label>
-    <input type="text" id="twitterInput" placeholder="Enter Twitter username">
-    <button onclick="connectAccount('twitter')">Connect</button>
-  </div>
-
-  <div class="social-input-row">
-    <label>TikTok Profile</label>
-    <input type="text" id="tiktokInput" placeholder="Enter TikTok username">
-    <button onclick="connectAccount('tiktok')">Connect</button>
-  </div>
-
-  <h3 class="connected-title">✅ Connected Accounts</h3>
-  <div id="connectedAccountsList"></div>
-</div>
-  <!-- ANALYTICS INTRO VIDEO -->
-
-
-  <!-- YOUTUBE ANALYTICS SECTION -->
-<div class="analytics-card glass-card">
-  <h2>📊 YouTube Channel Analytics</h2>
-  <p class="section-subtitle">Live public stats from your YouTube channel</p>
-
-  <button onclick="fetchYouTubeAnalytics()" class="analytics-btn">
-    Fetch YouTube Analytics
-  </button>
-
-  <div id="youtubeAnalyticsResult" class="analytics-result"></div>
-</div>
-<!-- ANALYTICS CHARTS -->
-<div class="analytics-card glass-card">
-  <h2>📈 Channel Growth Analytics</h2>
-  <canvas id="subsChart"></canvas>
-  <canvas id="viewsChart"></canvas>
-</div>
-  </div>
-
-    <!-- RIGHT COLUMN : Images -->
-  <div class="page-right">
-
-    <img src="assets-images/dashboard.gif" class="page-image">
-    <img src="assets-images/dashboard1.gif" class="page-image">
-
-  </div>
-
-
 </div>
 
+<!-- DASHBOARD PAGE -->
+<div class="dashboard-page">
 
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
-    <div class="footer-note">
-    Built by Rishabh | CreatorSpark MVP
+  <div class="dashboard-layout">
+
+    <!-- LEFT SIDE -->
+    <div class="dashboard-left">
+
+      <!-- CONNECT SOCIAL ACCOUNTS -->
+      <div class="social-connect-card glass-card">
+        <h2>🔗 Connect Your Social Accounts</h2>
+        <p class="section-subtitle">Link your creator profiles to unlock analytics & AI strategy</p>
+
+        <div class="social-input-row">
+          <label>YouTube Channel</label>
+          <input type="text" id="youtubeInput" placeholder="Enter YouTube channel URL or name">
+          <button onclick="connectAccount('youtube')">Connect</button>
+        </div>
+
+        <div class="social-input-row">
+          <label>Instagram Profile</label>
+          <input type="text" id="instagramInput" placeholder="Enter Instagram username">
+          <button onclick="connectAccount('instagram')">Connect</button>
+        </div>
+
+        <div class="social-input-row">
+          <label>Twitter (X) Profile</label>
+          <input type="text" id="twitterInput" placeholder="Enter Twitter username">
+          <button onclick="connectAccount('twitter')">Connect</button>
+        </div>
+
+        <div class="social-input-row">
+          <label>TikTok Profile</label>
+          <input type="text" id="tiktokInput" placeholder="Enter TikTok username">
+          <button onclick="connectAccount('tiktok')">Connect</button>
+        </div>
+
+        <h3 class="connected-title">✅ Connected Accounts</h3>
+        <div id="connectedAccountsList"></div>
+      </div>
+
+      <!-- ANALYTICS -->
+      <div class="analytics-card glass-card">
+        <h2>📊 YouTube Channel Analytics</h2>
+        <p class="section-subtitle">Live public stats from your YouTube channel</p>
+
+        <button onclick="fetchYouTubeAnalytics()" class="analytics-btn">
+          Fetch YouTube Analytics
+        </button>
+
+        <div id="youtubeAnalyticsResult" class="analytics-result"></div>
+      </div>
+
+      <!-- CHARTS -->
+      <div class="analytics-card glass-card">
+        <h2>📈 Channel Growth Analytics</h2>
+        <canvas id="subsChart"></canvas>
+        <canvas id="viewsChart"></canvas>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="dashboard-right">
+      <img src="assets-images/dashboard.gif" class="dashboard-image">
+      <img src="assets-images/dashboard1.gif" class="dashboard-image">
     </div>
 
   </div>
 
+</div>
+
+<!-- FOOTER -->
+<div class="footer-note">
+  Built by Rishabh | CreatorSpark MVP
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
 </html>
-
-
-<br><br>
-
