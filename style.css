@@ -950,7 +950,7 @@ canvas {
 /* Image Styling */
 
 
-.page-side-image:hover {
+.page-image:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 0 60px rgba(124,124,255,0.3);
 }
