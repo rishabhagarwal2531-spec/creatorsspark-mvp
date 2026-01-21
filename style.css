@@ -1026,8 +1026,11 @@ canvas {
 
 .page-images {
   display: flex;
-  justify-content: center;
+  flex-direction: column;   /* stack images vertically */
+  gap: 30px;                /* space between images */
+  align-items: center;
 }
+
 
 .page-side-image {
   width: 100%;
