@@ -30,39 +30,40 @@
 </div>
 
 
-  <div class="container">
- 
-  <div class="tagline">
-  Turn your content into growth — powered by AI and human insight.
+  <div class="auth-page">
+
+  <div class="auth-layout">
+
+    <!-- LEFT: Login Form -->
+    <div class="auth-left">
+
+      <h1>Login to CreatorSpark</h1>
+
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email">
+
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter your password">
+
+      <button onclick="loginUser()">Login</button>
+
+      <p style="margin-top: 18px; color: var(--text-muted); font-size: 15px;">
+        Don’t have an account?
+        <a href="signup.html" style="color: var(--primary); text-decoration: underline;">
+          Create one
+        </a>
+      </p>
+
+    </div>
+
+    <!-- RIGHT: Illustration -->
+    <div class="auth-right">
+      <img src="assets-images/login-illustration.svg" class="auth-image" alt="Login Illustration">
+    </div>
+
+  </div>
+
 </div>
-
-
-  <h1>Login</h1>
-  <p>Enter your credentials to continue.</p>
-
-  <hr>
-
-  <form id="loginForm">
-
-    <label>Email:</label><br>
-    <input type="email" id="loginEmail" required>
-    <br><br>
-
-    <label>Password:</label><br>
-    <input type="password" id="loginPassword" required>
-    <br><br>
-
-    <button type="button" onclick="loginUser()">
-      Login
-    </button>
-
-  </form>
-
-  <p>
-    Don’t have an account?
-    <a href="signup.html">Sign up here</a>
-  </p>
-
   
 <script src="script.js"></script>
   <div class="footer-note">
