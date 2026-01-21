@@ -42,7 +42,7 @@ body {
 
 /* Main Container */
 .container {
-    max-width: 100%;
+    max-width: 900px;
     margin-top: 40px;
    background: var(--bg-main);
     padding: 40px;
