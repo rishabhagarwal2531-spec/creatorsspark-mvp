@@ -936,7 +936,7 @@ canvas {
 }
 
 /* Image Column */
-.page-images {
+.page-image {
   width: 100%;
   max-width: 320px; /* matched to generate-ideas layout */
   border-radius: 18px;
