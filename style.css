@@ -1085,6 +1085,96 @@ canvas {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 0 60px rgba(124,124,255,0.3);
 }
+/* ===========================
+   DASHBOARD CARD UNIFIED STYLES
+   Matches Generate Ideas page
+   =========================== */
+
+/* Card Base */
+.dashboard-left .glass-card,
+.dashboard-left .analytics-card {
+  background: rgba(255, 255, 255, 0.03); /* lighter glass card */
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.12);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+/* Card Headings */
+.dashboard-left .glass-card h2,
+.dashboard-left .analytics-card h2 {
+  color: var(--text-main);      /* consistent dark light text */
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Card Subtitle Text */
+.dashboard-left .glass-card .section-subtitle,
+.dashboard-left .analytics-card .section-subtitle {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+/* Input Row Labels */
+.dashboard-left .social-input-row label {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Inputs */
+.dashboard-left .social-input-row input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-main);
+  font-size: 15px;
+}
+
+/* Buttons within dashboard */
+.dashboard-left .social-input-row button,
+.dashboard-left .analytics-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: black;
+  font-weight: 700;
+  padding: 12px 22px;
+  font-size: 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,240,255,0.35);
+}
+
+/* Connected Accounts Title */
+.dashboard-left .connected-title {
+  color: var(--text-main);
+  font-size: 18px;
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+/* Analytics Result Text */
+.dashboard-left .analytics-result {
+  color: var(--text-main);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Canvas Chart Cards */
+.dashboard-left .analytics-card canvas {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 30px rgba(0,240,255,0.08);
+}
+
+/* Chart Titles */
+.dashboard-left .analytics-card h2 {
+  margin-bottom: 14px;
+}
+
 
 
 
