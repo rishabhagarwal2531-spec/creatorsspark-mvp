@@ -1057,6 +1057,11 @@ canvas {
 /* Left content */
 .dashboard-left {
   flex: 2;
+    background: var(--bg-main);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+   color: var(--text-main);
 }
 
 /* Right images */
