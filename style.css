@@ -915,39 +915,44 @@ canvas {
 
 /* Two Column Page Layout */
 .page-layout {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  display: flex;
   gap: 50px;
-  align-items: start;
-  max-width: 1300px;
-  margin: auto;
-   padding: 40px 20px;
+  align-items: flex-start;
 }
 
+
 /* Left Content Column */
-.page-content {
-  width: 100%;
+.page-left {
+  flex: 2;
+}
+/* Right images */
+.page-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: sticky;
+  top: 120px;
 }
 
 /* Image Column */
 .page-images {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-/* Image Styling */
-.page-side-image {
   width: 100%;
-  max-width: 380px;
+  max-width: 360px;
   border-radius: 18px;
-  box-shadow: 0 0 30px rgba(0,240,255,0.18);
+  padding: 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(0,240,255,0.12);
   transition: 0.3s ease;
 }
 
+/* Image Styling */
+
+
 .page-side-image:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 0 45px rgba(124,124,255,0.35);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 60px rgba(124,124,255,0.3);
 }
 
 
