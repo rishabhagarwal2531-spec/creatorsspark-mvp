@@ -200,7 +200,7 @@ input, select, textarea {
 
 .nav-center a:hover {
   color: var(--primary);
-}
+  }
 
 
 .nav-right {
@@ -938,14 +938,13 @@ canvas {
 /* Image Column */
 .page-images {
   width: 100%;
-  max-width: 360px;
+  max-width: 320px; /* matched to generate-ideas layout */
   border-radius: 18px;
-  padding: 18px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 0 40px rgba(0,240,255,0.12);
+  box-shadow: 0 0 30px rgba(0,240,255,0.18);
   transition: 0.3s ease;
 }
+
+
 
 /* Image Styling */
 
