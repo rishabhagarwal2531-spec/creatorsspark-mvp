@@ -27,49 +27,50 @@
     <a href="signup.html" class="nav-btn primary">Sign Up</a>
   </div>
 </div>
+<div class="auth-page">
 
+  <div class="auth-layout">
 
-  <div class="container">
-  
-  <div class="tagline">
-  Turn your content into growth — powered by AI and human insight.
+    <!-- LEFT: Signup Form -->
+    <div class="auth-left">
+
+      <h1>Create an Account</h1>
+      <p>Get started with CreatorSpark — it’s free and fast.</p>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your Full Name">
+
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" placeholder="Your Phone Number">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your Email">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Create a Password">
+
+      <button onclick="signupUser()">Sign Up</button>
+
+      <p style="margin-top: 18px; color: var(--text-muted); font-size: 15px;">
+        Already have an account?
+        <a href="login.html" style="color: var(--primary); text-decoration: underline;">
+          Login here
+        </a>
+      </p>
+
+    </div>
+
+    <!-- RIGHT: Illustration -->
+    <div class="auth-right">
+      <img src="assets-images/sign-up.gif" class="auth-image" alt="Signup Illustration">
+    </div>
+
+  </div>
+
 </div>
 
 
-  <h1>Create Your Account</h1>
-  <p>Sign up to start generating content ideas.</p>
-
-  <hr>
-
-  <form id="signupForm">
-
-    <label>Name:</label><br>
-    <input type="text" id="name" required>
-    <br><br>
-
-    <label>Phone Number:</label><br>
-    <input type="tel" id="phone" required>
-    <br><br>
-
-    <label>Email:</label><br>
-    <input type="email" id="email" required>
-    <br><br>
-
-    <label>Password:</label><br>
-    <input type="password" id="password" required>
-    <br><br>
-
-    <button type="button" onclick="signupUser()">
-      Sign Up
-    </button>
-
-  </form>
-
-  <p>
-    Already have an account?
-    <a href="login.html">Login here</a>
-  </p>
-
+ 
   <script src="script.js"></script>
     <div class="footer-note">
     Built by Rishabh | CreatorSpark MVP
