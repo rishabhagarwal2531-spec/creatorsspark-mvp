@@ -1040,6 +1040,51 @@ canvas {
   transition: 0.3s ease;
 }
 
+/* DASHBOARD LAYOUT (MATCHES GENERATE IDEAS) */
+
+.dashboard-page {
+  max-width: 1300px;
+  margin: auto;
+  padding: 40px;
+}
+
+.dashboard-layout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Left content */
+.dashboard-left {
+  flex: 2;
+}
+
+/* Right images */
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: sticky;
+  top: 120px;
+}
+
+/* Image styling */
+.dashboard-image {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(0,240,255,0.12);
+  transition: 0.3s ease;
+}
+
+.dashboard-image:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 60px rgba(124,124,255,0.3);
+}
 
 
 
