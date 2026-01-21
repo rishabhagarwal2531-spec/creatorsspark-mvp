@@ -1010,6 +1010,32 @@ canvas {
     margin-top: 30px;
   }
 }
+.page-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: start;
+  max-width: 1300px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.page-content {
+  width: 100%;
+}
+
+.page-images {
+  display: flex;
+  justify-content: center;
+}
+
+.page-side-image {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(0,240,255,0.18);
+  transition: 0.3s ease;
+}
 
 
 
