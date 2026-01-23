@@ -1160,7 +1160,7 @@ canvas {
 .header-nav-top {
   display: flex;
   justify-content: center;
-  gap: 28px;
+  gap: 50px;
 }
 .header-bottom {
   display: flex;
@@ -1175,7 +1175,7 @@ canvas {
 .header-nav a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
@@ -1191,10 +1191,10 @@ canvas {
   text-shadow: 0 0 12px rgba(0, 240, 255, 0.9);
 }
 .header-nav-bottom a {
-  font-size: 15px;
+  font-size: 20px;
 }
 .logo img {
-  height: 50px;
+  height: 70px;
   width: auto;
 }
 .btn-login {
