@@ -1116,6 +1116,40 @@ canvas {
   }
 }
 
+.main-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.main-nav a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+.main-nav a.active {
+  color: var(--primary);
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.9);
+}
+.btn-login {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  );
+  color: #000;
+  font-weight: 600;
+}
+.btn-signup {
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--secondary)
+  );
+  color: #fff;
+  font-weight: 600;
+}
+
 
 
 
