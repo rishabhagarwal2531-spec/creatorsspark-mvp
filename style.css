@@ -1066,6 +1066,10 @@ canvas {
   box-shadow: 0 0 60px rgba(124,124,255,0.3);
 }
 
+.nav-center a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
 
 
 
