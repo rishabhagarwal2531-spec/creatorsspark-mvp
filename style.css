@@ -190,23 +190,7 @@ input, select, textarea {
 
 
 
-.nav-center a {
-  color: var(--text-muted);
-  text-decoration: none;
-  margin: 0 18px;
-  font-weight: 500;
-  transition: 0.3s;
-}
 
-.nav-center a:hover {
-  color: var(--primary);
-  }
-
-
-.nav-right {
-  display: flex;
-  gap: 12px;
-}
 
 
 .nav-btn.primary {
@@ -1076,34 +1060,59 @@ canvas {
   max-width: 140px;
   object-fit: contain;
 }
+/* ======================
+   HEADER STRUCTURE
+   ====================== */
+
+/* Top utility bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+}
+
+.top-bar .logo img {
+  height: 50px;
+}
+
+/* Auth buttons */
+.top-bar-right {
+  display: flex;
+  gap: 12px;
+}
+
+/* Main navigation bar */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 24px;
+  white-space: nowrap;
+}
+
+/* Active nav link */
+.main-nav a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* ======================
+   MOBILE BEHAVIOR
+   ====================== */
 @media (max-width: 768px) {
-
-  /* Navbar becomes two rows */
-  .navbar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 12px 16px;
-    gap: 12px;
+  .top-bar {
+    padding: 10px 16px;
   }
 
-  /* Top row: logo + auth buttons */
-  .navbar-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .top-bar .logo img {
+    height: 30px;
   }
 
-  /* Bottom row: nav links */
-  .nav-center {
-    display: flex;
+  .main-nav {
     flex-wrap: wrap;
-    justify-content: center;
     gap: 16px;
-  }
-
-  /* Slightly smaller links */
-  .nav-center a {
-    font-size: 14px;
+    padding: 10px 16px;
   }
 }
 
