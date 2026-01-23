@@ -1160,7 +1160,7 @@ canvas {
 .header-nav-top {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 80px;
 }
 .header-bottom {
   display: flex;
@@ -1170,7 +1170,7 @@ canvas {
 
 .header-nav-bottom {
   display: flex;
-  gap: 110px;
+  gap: 100px;
 }
 .header-nav a {
   color: var(--text-muted);
