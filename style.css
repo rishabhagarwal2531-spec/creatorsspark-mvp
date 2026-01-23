@@ -1076,6 +1076,28 @@ canvas {
   max-width: 140px;
   object-fit: contain;
 }
+@media (max-width: 768px) {
+
+  .dashboard-page {
+    overflow-x: hidden;
+  }
+
+  .dashboard-page .page-layout,
+  .dashboard-page .two-column-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-page .left-column,
+  .dashboard-page .right-column {
+    width: 100%;
+    flex: none;
+  }
+
+  .dashboard-page .right-column {
+    position: static;
+    margin-top: 24px;
+  }
+}
 
 
 
