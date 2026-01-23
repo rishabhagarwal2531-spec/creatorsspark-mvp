@@ -1070,6 +1070,12 @@ canvas {
   color: var(--primary-color);
   font-weight: 600;
 }
+.logo img {
+  height: 36px;        /* or 32px / 40px — your choice */
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+}
 
 
 
