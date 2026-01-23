@@ -1170,7 +1170,7 @@ canvas {
 
 .header-nav-bottom {
   display: flex;
-  gap: 28px;
+  gap: 50px;
 }
 .header-nav a {
   color: var(--text-muted);
@@ -1194,7 +1194,7 @@ canvas {
   font-size: 15px;
 }
 .logo img {
-  height: 36px;
+  height: 50px;
   width: auto;
 }
 .btn-login {
