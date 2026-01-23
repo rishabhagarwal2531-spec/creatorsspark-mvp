@@ -7,32 +7,43 @@
 
 <body>
 
-<!-- NAVBAR -->
-<div class="header">
-  <div class="nav-left">
-  <div class="logo">
-  <a href="index.html">
-    <img src="assets-images/logo.png" alt="CreatorSpark">
-  </a>
-</div>
+<header class="site-header">
 
+  <!-- ROW 1 -->
+  <div class="header-top">
+    <!-- Left: Logo -->
+    <div class="header-left">
+      <a href="index.html" class="logo">
+        <img src="assets-images/logo.png" alt="CreatorSpark">
+      </a>
+    </div>
+
+    <!-- Center: Primary navigation -->
+    <nav class="header-nav header-nav-top">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="generate-ideas.html">Generate Ideas</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+
+    <!-- Right: Auth buttons -->
+    <div class="header-right">
+      <a href="login.html" class="btn-login">Login</a>
+      <a href="signup.html" class="btn-signup">Sign Up</a>
+    </div>
   </div>
 
-  <div class="nav-center">
-    <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="generate-ideas.html">Generate Ideas</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="features.html">Features</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+  <!-- ROW 2 -->
+  <div class="header-bottom">
+    <nav class="header-nav header-nav-bottom">
+      <a href="features.html">Features</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 
-  <div class="nav-right">
-    <a href="login.html" class="nav-btn">Login</a>
-    <a href="signup.html" class="nav-btn primary">Sign Up</a>
-  </div>
-</div>
+</header>
+
+
 
 <section class="home-layout">
 
