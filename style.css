@@ -1170,7 +1170,7 @@ canvas {
 
 .header-nav-bottom {
   display: flex;
-  gap: 150px;
+  gap: 130px;
 }
 .header-nav a {
   color: var(--text-muted);
