@@ -70,6 +70,20 @@
   </div>
 
 </div>
+<!-- your other scripts (if any) -->
+
+<script>
+  const currentPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(".nav-center a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+</body>
+</html>
 
 </body>
 </html>
