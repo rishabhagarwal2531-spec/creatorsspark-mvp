@@ -124,6 +124,16 @@ Lessons from my first 10k subscribers"></textarea>
 <div class="footer-note">
   Built by Rishabh | CreatorSpark MVP
 </div>
+  <script>
+  const currentPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(".nav-center a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
 
  
 <script src="script.js"></script>
