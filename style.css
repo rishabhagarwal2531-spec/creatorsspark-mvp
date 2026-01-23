@@ -1081,6 +1081,10 @@ canvas {
   .dashboard-page {
     overflow-x: hidden;
   }
+  
+  .dashboard-page .logo img {
+    height: 28px;
+  }
 
   .dashboard-page .page-layout,
   .dashboard-page .two-column-layout {
@@ -1097,6 +1101,15 @@ canvas {
     position: static;
     margin-top: 24px;
   }
+}
+/* Desktop navbar baseline */
+.navbar {
+  min-height: 72px;
+  padding: 16px 32px;
+}
+.logo img {
+  height: 36px;   /* desktop */
+  width: auto;
 }
 
 
