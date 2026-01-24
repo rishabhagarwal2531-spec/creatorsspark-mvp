@@ -173,6 +173,13 @@ Lessons from my first 10k subscribers"></textarea>
     `;
   }
 </script>
+<script>
+  const user = localStorage.getItem("creatorSparkUser");
+
+  if (!user) {
+    window.location.href = "index.html";
+  }
+</script>
 
 
  
