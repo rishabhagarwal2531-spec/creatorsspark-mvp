@@ -121,6 +121,14 @@
     `;
   }
 </script>
+  <script>
+  const user = localStorage.getItem("creatorSparkUser");
+
+  if (!user) {
+    window.location.href = "index.html";
+  }
+</script>
+
 
 
 </body>
