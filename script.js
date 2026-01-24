@@ -29,25 +29,29 @@ function signupUser() {
 }
 
 
-function loginUser() {
+
+  function loginUser() {
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
 
-    const storedUser = localStorage.getItem("creatorsparkUser");
-
-    if (!storedUser) {
-        alert("No user found. Please sign up first.");
-        return;
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
     }
 
-    const user = JSON.parse(storedUser);
+    // Save session (SINGLE SOURCE OF TRUTH)
+    localStorage.setItem(
+      "creatorSparkUser",
+      JSON.stringify({
+        email: email,
+        name: email.split("@")[0]
+      })
+    );
 
-    if (email === user.email && password === user.password) {
-        window.location.href = "dashboard.html";
-    } else {
-        alert("Invalid email or password.");
-    }
-}
+    // Redirect after login
+    window.location.href = "dashboard.html";
+  }
+
 
 function handleContentTypeChange() {
     const contentType = document.getElementById("contentType").value;
