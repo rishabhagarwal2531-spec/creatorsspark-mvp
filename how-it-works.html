@@ -25,10 +25,9 @@
     </nav>
 
     <!-- Right: Auth buttons -->
-    <div class="header-right">
-      <a href="login.html" class="btn-login">Login</a>
-      <a href="signup.html" class="btn-signup">Sign Up</a>
-    </div>
+    <!-- Right: Auth area (JS controlled) -->
+<div class="header-right" id="auth-area"></div>
+
   </div>
 
   <!-- ROW 2 -->
@@ -39,9 +38,6 @@
       <a href="contact.html">Contact</a>
     </nav>
   </div>
-  <div class="header-right" id="auth-area">
-  <!-- JS will inject content here -->
-</div>
 
 
 </header>
@@ -95,38 +91,8 @@
     }
   });
 </script>
-  <script>
-  const authArea = document.getElementById("auth-area");
-  const user = JSON.parse(localStorage.getItem("creatorSparkUser"));
-
-  if (user) {
-    authArea.innerHTML = `
-      <div class="user-info">
-        <div class="avatar">${user.name.charAt(0).toUpperCase()}</div>
-        <span class="username">${user.name}</span>
-        <button class="btn-logout">Logout</button>
-      </div>
-    `;
-
-    document.querySelector(".btn-logout").addEventListener("click", () => {
-      localStorage.removeItem("creatorSparkUser");
-      window.location.href = "index.html";
-    });
-  } else {
-    authArea.innerHTML = `
-      <a href="login.html" class="btn-login">Login</a>
-      <a href="signup.html" class="btn-signup">Sign Up</a>
-    `;
-  }
-</script>
-  <script>
-  const user = localStorage.getItem("creatorSparkUser");
-
-  if (!user) {
-    window.location.href = "index.html";
-  }
-</script>
-
+ 
+<script src="script.js"></script>
 
 
  
