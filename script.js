@@ -43,7 +43,6 @@ function loginUser() {
     const user = JSON.parse(storedUser);
 
     if (email === user.email && password === user.password) {
-        alert("Login successful!");
         window.location.href = "dashboard.html";
     } else {
         alert("Invalid email or password.");
