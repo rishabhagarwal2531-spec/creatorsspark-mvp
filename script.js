@@ -391,7 +391,16 @@ if (authArea) {
     `;
   }
 }
-    
+    // ===== ACTIVE NAV LINK =====
+const currentPageName =
+  window.location.pathname.split("/").pop() || "index.html";
+
+document.querySelectorAll(".header-nav a").forEach(link => {
+  if (link.getAttribute("href") === currentPageName) {
+    link.classList.add("active");
+  }
+});
+
 
 
 
