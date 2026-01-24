@@ -96,5 +96,29 @@
     }
   });
 </script>
+ <script>
+  function loginUser() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
+    }
+
+    // Save login session (MVP / demo)
+    localStorage.setItem(
+      "creatorSparkUser",
+      JSON.stringify({
+        email: email,
+        name: email.split("@")[0]
+      })
+    );
+
+    // Redirect to dashboard after login
+    window.location.href = "dashboard.html";
+  }
+</script>
+
 </body>
 </html>
