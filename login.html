@@ -123,6 +123,30 @@
     window.location.href = "dashboard.html";
   }
 </script>
+<script>
+  const authArea = document.getElementById("auth-area");
+  const user = JSON.parse(localStorage.getItem("creatorSparkUser"));
+
+  if (user) {
+    authArea.innerHTML = `
+      <div class="user-info">
+        <div class="avatar">${user.name.charAt(0).toUpperCase()}</div>
+        <span class="username">${user.name}</span>
+        <button class="btn-logout">Logout</button>
+      </div>
+    `;
+
+    document.querySelector(".btn-logout").addEventListener("click", () => {
+      localStorage.removeItem("creatorSparkUser");
+      window.location.href = "index.html";
+    });
+  } else {
+    authArea.innerHTML = `
+      <a href="login.html" class="btn-login">Login</a>
+      <a href="signup.html" class="btn-signup">Sign Up</a>
+    `;
+  }
+</script>
 
 </body>
 </html>
