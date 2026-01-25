@@ -442,6 +442,34 @@ function initUserMenu() {
     }
   });
 }
+function renderAuthArea(user) {
+  const authArea = document.getElementById("authArea");
+  if (!authArea) return;
+
+  // Logged out
+  if (!user) {
+    authArea.innerHTML = `
+      <a href="login.html" class="btn-outline">Login</a>
+      <a href="signup.html" class="btn-primary">Sign Up</a>
+    `;
+    return;
+  }
+
+  // Logged in (avatar dropdown)
+  authArea.innerHTML = `
+    <div class="user-menu">
+      <div class="user-trigger">
+        <img src="assets/avatar.svg" alt="User avatar" />
+        <span class="username">${user.name}</span>
+      </div>
+
+      <div class="user-dropdown">
+        <a href="dashboard.html">Dashboard</a>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  `;
+}
 
 
 
