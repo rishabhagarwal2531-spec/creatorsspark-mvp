@@ -2,6 +2,11 @@
 
 let youtubeHistory = JSON.parse(localStorage.getItem("creatorsparkYouTubeHistory")) || {};
 
+// Renders header auth section based on login state
+function renderHeader() {
+  const user = getUser();
+  renderAuthArea(user);
+}
 
 function signupUser() {
     const name = document.getElementById("name").value;
@@ -421,27 +426,9 @@ function initDashboardWelcome() {
     <p>Let’s spark your next great content idea.</p>
   `;
 }
-document.addEventListener("DOMContentLoaded", () => {
-  protectPage();
-  renderHeader();
-  initDashboardWelcome();
-});
 
-function initUserMenu() {
-  const menu = document.querySelector(".user-menu");
-  if (!menu) return;
 
-  menu.querySelector(".user-trigger")
-    .addEventListener("click", () => {
-      menu.classList.toggle("open");
-    });
 
-  document.addEventListener("click", e => {
-    if (!menu.contains(e.target)) {
-      menu.classList.remove("open");
-    }
-  });
-}
 function renderAuthArea(user) {
   const authArea = document.getElementById("authArea");
   if (!authArea) return;
@@ -470,8 +457,28 @@ function renderAuthArea(user) {
     </div>
   `;
 }
+function initUserMenu() {
+  const menu = document.querySelector(".user-menu");
+  if (!menu) return;
 
+  menu.querySelector(".user-trigger")
+    .addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
 
+  document.addEventListener("click", e => {
+    if (!menu.contains(e.target)) {
+      menu.classList.remove("open");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  protectPage();
+  renderHeader();
+  initUserMenu();
+  initDashboardWelcome(); // safe even if not on dashboard
+});
 
 
 
