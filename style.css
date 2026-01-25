@@ -1273,7 +1273,52 @@ canvas {
   );
   color: #fff;
 }
+.user-menu {
+  position: relative;
+}
 
+.user-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: rgba(20, 20, 30, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 10px;
+  display: none;
+  min-width: 160px;
+}
+
+.user-dropdown a,
+.user-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  color: white;
+  text-align: left;
+}
+
+.user-menu.open .user-dropdown {
+  display: block;
+}
+button {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.glass-card {
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+}
 
 
 
