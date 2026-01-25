@@ -403,8 +403,45 @@ document.querySelectorAll(".header-nav a").forEach(link => {
     link.classList.add("active");
   }
 });
+function getGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
 
+function initDashboardWelcome() {
+  const user = JSON.parse(localStorage.getItem("creatorSparkUser"));
+  const welcomeEl = document.querySelector(".dashboard-welcome");
 
+  if (!welcomeEl || !user) return;
+
+  welcomeEl.innerHTML = `
+    <h1>${getGreeting()}, ${user.name} 👋</h1>
+    <p>Let’s spark your next great content idea.</p>
+  `;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  protectPage();
+  renderHeader();
+  initDashboardWelcome();
+});
+
+function initUserMenu() {
+  const menu = document.querySelector(".user-menu");
+  if (!menu) return;
+
+  menu.querySelector(".user-trigger")
+    .addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+
+  document.addEventListener("click", e => {
+    if (!menu.contains(e.target)) {
+      menu.classList.remove("open");
+    }
+  });
+}
 
 
 
