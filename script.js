@@ -2,11 +2,7 @@
 
 let youtubeHistory = JSON.parse(localStorage.getItem("creatorsparkYouTubeHistory")) || {};
 
-// Renders header auth section based on login state
-function renderHeader() {
-  const user = getUser();
-  renderAuthArea(user);
-}
+
 
 function signupUser() {
     const name = document.getElementById("name").value;
@@ -368,6 +364,16 @@ function renderCharts(channelTitle) {
     return null;
   }
 }
+function highlightActiveNav() {
+  const currentPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+document.querySelectorAll(".header-nav a").forEach(link => {
+  if (link.getAttribute("href") === currentPageName) {
+    link.classList.add("active");
+  }
+});
+}
 function protectPage() {
   const user = getUser();
 
@@ -377,7 +383,6 @@ const protectedPages = [
   "how-it-works.html",
   "features.html"
 ];
-
 
 
 if (protectedPages.includes(currentPage) && !user) {
@@ -423,17 +428,7 @@ function renderHeader() {
   renderAuthArea(user);
   highlightActiveNav();
 }
-// ===== ACTIVE NAV LINK =====
-function highlightActiveNav() {
-  const currentPage =
-    window.location.pathname.split("/").pop() || "index.html";
 
-document.querySelectorAll(".header-nav a").forEach(link => {
-  if (link.getAttribute("href") === currentPageName) {
-    link.classList.add("active");
-  }
-});
-}
 function getGreeting() {
   const hour = new Date().getHours();
   if (hour < 12) return "Good morning";
