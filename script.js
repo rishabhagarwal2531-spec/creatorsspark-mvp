@@ -360,7 +360,7 @@ function renderCharts(channelTitle) {
 // ===== AUTH STATE =====
 
 // ===== PAGE PROTECTION =====
-function protectPage() {
+
   function getUser() {
   try {
     return JSON.parse(localStorage.getItem("creatorSparkUser"));
@@ -368,6 +368,8 @@ function protectPage() {
     return null;
   }
 }
+function protectPage() {
+  const user = getUser();
 
 const protectedPages = [
   "dashboard.html",
@@ -383,43 +385,6 @@ if (protectedPages.includes(currentPage) && !user) {
   window.location.href = "index.html";
 }
 }
-// ===== ACTIVE NAV LINK =====
-const currentPageName =
-  window.location.pathname.split("/").pop() || "index.html";
-
-document.querySelectorAll(".header-nav a").forEach(link => {
-  if (link.getAttribute("href") === currentPageName) {
-    link.classList.add("active");
-  }
-});
-function getGreeting() {
-  const hour = new Date().getHours();
-  if (hour < 12) return "Good morning";
-  if (hour < 18) return "Good afternoon";
-  return "Good evening";
-}
-
-function initDashboardWelcome() {
-  function getUser() {
-  try {
-    return JSON.parse(localStorage.getItem("creatorSparkUser"));
-  } catch {
-    return null;
-  }
-}
-
-  const welcomeEl = document.querySelector(".dashboard-welcome");
-
-  if (!welcomeEl || !user) return;
-
-  welcomeEl.innerHTML = `
-    <h1>${getGreeting()}, ${user.name} 👋</h1>
-    <p>Let’s spark your next great content idea.</p>
-  `;
-}
-
-
-
 function renderAuthArea(user) {
   const authArea = document.getElementById("authArea");
   if (!authArea) return;
@@ -447,7 +412,52 @@ function renderAuthArea(user) {
       </div>
     </div>
   `;
+ document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("creatorSparkUser");
+    window.location.href = "index.html";
+  });
 }
+
+function renderHeader() {
+  const user = getUser();
+  renderAuthArea(user);
+  highlightActiveNav();
+}
+// ===== ACTIVE NAV LINK =====
+function highlightActiveNav() {
+  const currentPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+document.querySelectorAll(".header-nav a").forEach(link => {
+  if (link.getAttribute("href") === currentPageName) {
+    link.classList.add("active");
+  }
+});
+}
+function getGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+function initDashboardWelcome() {
+  const user = getUser();
+  
+
+
+  const welcomeEl = document.querySelector(".dashboard-welcome");
+
+  if (!welcomeEl || !user) return;
+
+  welcomeEl.innerHTML = `
+    <h1>${getGreeting()}, ${user.name} 👋</h1>
+    <p>Let’s spark your next great content idea.</p>
+  `;
+}
+
+
+
 function initUserMenu() {
   const menu = document.querySelector(".user-menu");
   if (!menu) return;
