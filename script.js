@@ -364,10 +364,11 @@ function renderCharts(channelTitle) {
     return null;
   }
 }
-function highlightActiveNav() {
-  const currentPage =
+const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
+
+function highlightActiveNav() { 
 document.querySelectorAll(".header-nav a").forEach(link => {
   if (link.getAttribute("href") === currentPageName) {
     link.classList.add("active");
