@@ -358,11 +358,17 @@ function renderCharts(channelTitle) {
 }
 
 // ===== AUTH STATE =====
-const user = JSON.parse(localStorage.getItem("creatorSparkUser"));
 
 // ===== PAGE PROTECTION =====
 function protectPage() {
-  const user = getUser();
+  function getUser() {
+  try {
+    return JSON.parse(localStorage.getItem("creatorSparkUser"));
+  } catch {
+    return null;
+  }
+}
+
 const protectedPages = [
   "dashboard.html",
   "generate-ideas.html",
@@ -376,32 +382,8 @@ const currentPage =
 if (protectedPages.includes(currentPage) && !user) {
   window.location.href = "index.html";
 }
-
-// ===== HEADER AUTH SWITCH =====
-const authArea = document.getElementById("auth-area");
-
-if (authArea) {
-  if (user) {
-    authArea.innerHTML = `
-      <div class="user-info">
-        <div class="avatar">${user.name.charAt(0).toUpperCase()}</div>
-        <span class="username">${user.name}</span>
-        <button class="btn-logout">Logout</button>
-      </div>
-    `;
-
-    document.querySelector(".btn-logout").addEventListener("click", () => {
-      localStorage.removeItem("creatorSparkUser");
-      window.location.href = "index.html";
-    });
-  } else {
-    authArea.innerHTML = `
-      <a href="login.html" class="btn-login">Login</a>
-      <a href="signup.html" class="btn-signup">Sign Up</a>
-    `;
-  }
 }
-    // ===== ACTIVE NAV LINK =====
+// ===== ACTIVE NAV LINK =====
 const currentPageName =
   window.location.pathname.split("/").pop() || "index.html";
 
@@ -418,7 +400,14 @@ function getGreeting() {
 }
 
 function initDashboardWelcome() {
-  const user = JSON.parse(localStorage.getItem("creatorSparkUser"));
+  function getUser() {
+  try {
+    return JSON.parse(localStorage.getItem("creatorSparkUser"));
+  } catch {
+    return null;
+  }
+}
+
   const welcomeEl = document.querySelector(".dashboard-welcome");
 
   if (!welcomeEl || !user) return;
