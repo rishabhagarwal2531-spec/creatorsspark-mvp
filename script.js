@@ -370,7 +370,7 @@ const currentPage =
 
 function highlightActiveNav() { 
 document.querySelectorAll(".header-nav a").forEach(link => {
-  if (link.getAttribute("href") === currentPageName) {
+  if (link.getAttribute("href") === currentPage) {
     link.classList.add("active");
   }
 });
