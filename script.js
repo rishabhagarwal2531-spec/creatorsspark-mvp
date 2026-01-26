@@ -361,6 +361,8 @@ function renderCharts(channelTitle) {
 const user = JSON.parse(localStorage.getItem("creatorSparkUser"));
 
 // ===== PAGE PROTECTION =====
+function protectPage() {
+  const user = getUser();
 const protectedPages = [
   "dashboard.html",
   "generate-ideas.html",
