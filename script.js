@@ -378,8 +378,7 @@ const protectedPages = [
   "features.html"
 ];
 
-const currentPage =
-  window.location.pathname.split("/").pop() || "index.html";
+
 
 if (protectedPages.includes(currentPage) && !user) {
   window.location.href = "index.html";
@@ -402,7 +401,8 @@ function renderAuthArea(user) {
   authArea.innerHTML = `
     <div class="user-menu">
       <div class="user-trigger">
-        <img src="assets/avatar.svg" alt="User avatar" />
+        <div class="avatar-circle">${user.name.charAt(0).toUpperCase()}</div>
+
         <span class="username">${user.name}</span>
       </div>
 
