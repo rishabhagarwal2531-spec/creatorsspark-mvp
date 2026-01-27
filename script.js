@@ -470,15 +470,24 @@ function initUserMenu() {
   });
 }
 
+
+
+function placeAuthAreaInHeader() {
+  const authArea = document.getElementById("authArea");
+  const headerTop = document.querySelector(".header-nav-top");
+
+  if (!authArea || !headerTop) return;
+
+  // Move authArea into the top header row (right side)
+  headerTop.appendChild(authArea);
+}
 document.addEventListener("DOMContentLoaded", () => {
   protectPage();
   renderHeader();
+  placeAuthAreaInHeader(); 
   initUserMenu();
   initDashboardWelcome(); // safe even if not on dashboard
 });
-
-
-
 
 
 
