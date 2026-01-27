@@ -1321,6 +1321,23 @@ button:hover {
 }
 
 
+/* ===== HEADER AUTH AREA ===== */
+#authArea {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-menu {
+  position: relative;
+}
+
+.user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
 
 
