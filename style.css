@@ -1333,6 +1333,7 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 12px;
+   margin-left: 48px;
 }
 .user-menu {
   position: relative;
@@ -1341,12 +1342,54 @@ button:hover {
 .user-trigger {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+
+    padding: 8px 14px;
+  border-radius: 999px;
+
+  background: rgba(0, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0, 255, 255, 0.25);
+
   cursor: pointer;
+  transition: all 0.25s ease;
+}
+.user-trigger:hover {
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 20px rgba(0, 255, 255, 0.35);
 }
 
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  font-weight: 700;
+  font-size: 14px;
+
+  color: #00151a;
+  background: linear-gradient(135deg, #00f0ff, #8b5cf6);
+
+  box-shadow:
+    0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+.user-trigger .username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e6fdff;
+  letter-spacing: 0.3px;
+}
+
+.user-trigger {
+  box-shadow: 0 0 6px rgba(0, 240, 255, 0.35);
+}
 
 
 
